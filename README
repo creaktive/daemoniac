@@ -1,4 +1,4 @@
-                     Demoniac v0.1b -- DAEMON'iac Advisor
+                     Demoniac v0.2b -- DAEMON'iac Advisor
                      ====================================
 
 Coded by Stas (Mail: stas@grad.icmc.sc.usp.br; URL: http://sysd.hypermart.net);
@@ -41,7 +41,15 @@ BUGS:
 	o This fuck accesses hardware I/O directly, so...
 	  Read IO-Port-Programming-HOWTO if you didn't
 	  know what does it means ;)
-	o The music it plays is quite stupid
+	o Bass and drums not available at now... FFFFFUCK!!!
+
+
+CHANGES:
+
+Major changes since 0.2b:
+	*) More hillary README
+	*) Now plays "Fear Of The Dark"!!!!!!!!!
+	*) More advanced music timing
 
 
 FUTURE VERSIONS:
@@ -51,17 +59,19 @@ FUTURE VERSIONS:
 so I'm not gonna develop it. Just some add-ons when I got free time
 or/and drunk... But, anyway:
 
-	o More flexibility; play specific sounds and files (maybe DOS .MUS?!).
+	o More flexibility; play specific sounds and files (maybe MP3?!).
 	o New name ("demoniac" is quite unhappy...).
 	o Strip sound funcions and put them in static lib.
 
 
 THANKS:
 
-	o t0p, for idea of daemon beeper
-	o Dr. Checks, for music (it rocks!)
+	o Dr. Checks, for music conversion
+	o Iron Maiden, for music
+	o Linus Torvalds, for /usr/src/linux/include/asm-i386
+	o Peter Norton, for PC speaker controlling algorythm
 	o Riku Saikkonen, for his IO-Port-Programming-HOWTO
-	o Peter Norton, for PC Speaker beepin' algorithm
+	o t0p, for idea of daemon beeper
 
 
 

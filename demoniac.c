@@ -2,8 +2,8 @@
 #include <unistd.h>
 #include <asm/io.h>
 
-#define	SHORT_S	110
-#define	LONG_S	SHORT_S * 2
+#define LEN 150
+#define MLEN 1
 
 void Sound(unsigned int freq)
 {
@@ -25,6 +25,8 @@ void DoSound(unsigned int freq, unsigned int time)
 	Sound(freq);
 	usleep(time * 1000);	// microsseconds => milliseconds
 	NoSound();
+
+	usleep(MLEN * 1000);
 }
 
 int InitSound(void)
@@ -44,12 +46,139 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	
-	DoSound(466, SHORT_S);		// A#4
-	DoSound(622, SHORT_S);		// D#5
-	DoSound(784, SHORT_S);		// G5
-	DoSound(932, LONG_S);		// A#5
-	DoSound(784, SHORT_S);		// G5
-	DoSound(932, LONG_S + SHORT_S);	// A#5
+	DoSound(587, LEN * 2);	// D5
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+	DoSound(698, LEN);	// F5
+	DoSound(698, LEN);	// F5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+
+	DoSound(523, LEN * 2);	// C5
+	DoSound(392, LEN);	// G4
+	DoSound(392, LEN);	// G4
+	DoSound(523, LEN);	// C5
+	DoSound(523, LEN);	// C5
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(523, LEN);	// C5
+	DoSound(523, LEN);	// C5
+	DoSound(659, LEN);	// E5
+	DoSound(523, LEN);	// C5
+
+	DoSound(587, LEN * 2);	// D5
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+	DoSound(698, LEN);	// F5
+	DoSound(698, LEN);	// F5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+
+	DoSound(523, LEN * 2);	// C5
+	DoSound(392, LEN);	// G4
+	DoSound(392, LEN);	// G4
+	DoSound(523, LEN);	// C5
+	DoSound(523, LEN);	// C5
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(659, LEN);	// E5
+	DoSound(659, LEN);	// E5
+	DoSound(587, LEN);	// D5
+	DoSound(587, LEN);	// D5
+	DoSound(523, LEN);	// C5
+	DoSound(523, LEN);	// C5
+	DoSound(659, LEN);	// E5
+	DoSound(523, LEN);	// C5
+
+
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(330, LEN);	// E4
+	DoSound(330, LEN);	// E4
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+	DoSound(523, LEN);	// C5
+	DoSound(523, LEN);	// C5
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+
+	DoSound(392, LEN);	// G4
+	DoSound(392, LEN);	// G4
+	DoSound(294, LEN);	// D4
+	DoSound(294, LEN);	// D4
+	DoSound(392, LEN);	// G4
+	DoSound(392, LEN);	// G4
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(392, LEN);	// G4
+	DoSound(392, LEN);	// G4
+	DoSound(494, LEN);	// B4
+	DoSound(392, LEN);	// G4
+
+
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(330, LEN);	// E4
+	DoSound(330, LEN);	// E4
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+	DoSound(523, LEN);	// C5
+	DoSound(523, LEN);	// C5
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+	DoSound(440, LEN);	// A4
+	DoSound(440, LEN);	// A4
+	DoSound(494, LEN);	// B4
+	DoSound(494, LEN);	// B4
+
+	DoSound(349, LEN);	// F4
+	DoSound(349, LEN);	// F4
+	DoSound(262, LEN);	// C4
+	DoSound(262, LEN);	// C4
+	DoSound(349, LEN);	// F4
+	DoSound(349, LEN);	// F4
+	DoSound(392, LEN);	// G4
+	DoSound(392, LEN);	// G4
+	DoSound(440, LEN + (LEN / 8));	// A4
+	DoSound(440, LEN + (LEN / 7));	// A4
+	DoSound(392, LEN + (LEN / 6));	// G4
+	DoSound(392, LEN + (LEN / 5));	// G4
+	DoSound(349, LEN + (LEN / 4));	// F4
+	DoSound(349, LEN + (LEN / 3));	// F4
+	DoSound(440, LEN + (LEN / 2));	// A4
+	DoSound(349, LEN * 4);	// F4
 
 	return 0;
 }
