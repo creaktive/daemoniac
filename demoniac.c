@@ -1,6 +1,23 @@
+/*
+
+                     Demoniac v0.3b -- DAEMON'iac Advisor
+                     ====================================
+
+Coded by Stas (Mail: stas@grad.icmc.sc.usp.br; URL: http://sysd.hypermart.net);
+(C)opyLeft by SysD Destructive Labs, 1997-2000
+
+
+See README for more info.
+
+Compile with:
+gcc -O2 -o demoniac demoniac.c; strip demoniac
+
+*/
+
+#include <asm/io.h>
+#include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <asm/io.h>
 
 #define LEN 150
 #define MLEN 1
@@ -38,6 +55,13 @@ int InitSound(void)
 }
 
 
+static void shutup(int signal)
+{
+	NoSound();
+	exit(1);
+}
+
+
 int main(int argc, char *argv[])
 {
 	if (InitSound())
@@ -45,6 +69,10 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "must be root!!!\n");
 		return -1;
 	}
+
+	signal(SIGTERM, shutup);
+	signal(SIGINT, shutup);
+	signal(SIGHUP, shutup);
 	
 	DoSound(587, LEN * 2);	// D5
 	DoSound(440, LEN);	// A4

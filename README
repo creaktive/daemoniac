@@ -1,4 +1,4 @@
-                     Demoniac v0.2b -- DAEMON'iac Advisor
+                     Demoniac v0.3b -- DAEMON'iac Advisor
                      ====================================
 
 Coded by Stas (Mail: stas@grad.icmc.sc.usp.br; URL: http://sysd.hypermart.net);
@@ -46,11 +46,17 @@ BUGS:
 
 CHANGES:
 
+Major changes since 0.3b:
+	*) Now cn be interrupted with no sound hang!
+	*) demoniac.c comment now explains how to compile it
+
 Major changes since 0.2b:
 	*) More hillary README
 	*) Now plays "Fear Of The Dark"!!!!!!!!!
 	*) More advanced music timing
 
+Major changes since 0.1b:
+	First public release!!!
 
 FUTURE VERSIONS:
 
