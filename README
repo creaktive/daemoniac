@@ -1,86 +1,85 @@
-                     Demoniac v0.3b -- DAEMON'iac Advisor
-                     ====================================
+		     Demoniac v0.666a -- DAEMON'iac Advisor
+		     ======================================
 
-Coded by Stas (Mail: stas@grad.icmc.sc.usp.br; URL: http://sysd.hypermart.net);
-(C)opyLeft by SysD Destructive Labs, 1997-2000
+Coded by Stas (Mail: stanis@linuxmail.org; URL: http://sysd.org/);
+(C)opyLeft by SysD Destructive Labs, 1997-2004
 
 
 DESCRIPTION:
 
-	This is a very primitive sound advice for Linux. Well...
-What a reason to do all this fuck with direct port I/O, if there are XBell(3)
-and printf("\a")?! The reason is simple: all these cool things needs specific
-client to be connected, so they can BEEP'em. And, sure, they don't work if used
-as sound advice for telnetd daemon (that haven't client), for example.
+	Produces sound (in this specific case, the beginning of Iron Maiden song
+"Fear Of The Dark") on internal PC Speaker hardware. Compiles and works on:
+
+ * DOS (DJGPP, Turbo C)
+ * Windows 9x/NT/2K/XP (Borland C, Microsoft Visual C, MinGW)
+ * Linux (gcc)
+ * FreeBSD (gcc)
+
+(see compiling instructions below)
+
+Can be useful to provide audible alert without acessing soundcard. Requires
+superuser powers except for Windows NT/2K/XP (note that superuser is default
+mode for DOS & Windows 9x ;)
+This code is also supposed to be portable to *any* OS that runs on i386
+architecture. Other architectures are not supported and neither will be!
+
+
+COMPILING:
+
+ * Compile on Linux & FreeBSD with:
+	gcc -O2 -o demoniac demoniac.c; strip demoniac
+
+ * Compile Windows generic with:
+	gcc -O2 -o demoniac.exe demoniac.c
+	strip demoniac.exe
+		or
+	cl demoniac.c
+		or
+	bcc32 demoniac.c
+
+ * Compile Windows 9x-specific (for debugging) with:
+	gcc -D_WIN9X -O2 -o demoniac.exe demoniac.c
+		or
+	cl -D_WIN9X demoniac.c
+		or
+	bcc32 -D_WIN9X demoniac.c
+
+ * Compile Windows NT/2K/XP-specific (for debugging) with:
+	gcc -D_WINNT -O2 -o demoniac.exe demoniac.c
+		or
+	cl -D_WINNT demoniac.c
+		or
+	bcc32 -D_WINNT demoniac.c
+
+ * Compile on DOS under Turbo C:
+	tcc -O demoniac.c
+
+ * Compile on DOS under DJGPP:
+	gcc -O2 -o demoniac.exe demoniac.c
+	strip demoniac
+
+
+	Note: you might try -DNOFEAR compiler flag if you want more simple music.
+	(this WAS the original music played by demoniac 0.1b ;)
 
 
 USAGE:
 
-	Here I'll try to explain how to make your computer beep when
-someone tries to connect your machine through telnetd(8):
-(Heheh, enjoy that, t0p ;)
-
--- lines from /etc/inetd.conf --
-(blah blah blah)
-telnet	stream	tcp	nowait	root	/usr/sbin/tcpd	in.telnetd -L /usr/local/sbin/login_
-(blah blah blah)
--- end --
-
--- lines from /usr/local/sbin/login_ --
-#!/bin/sh
-/usr/local/sbin/demoniac &
-exec login $*
--- end --
-
-Sure, that you may
-chmod +x login_
+	Reprogram sound in the way you want and paste into your own source :)
 
 
 BUGS:
 
-	o This fuck accesses hardware I/O directly, so...
-	  Read IO-Port-Programming-HOWTO if you didn't
-	  know what does it means ;)
-	o Bass and drums not available at now... FFFFFUCK!!!
-
-
-CHANGES:
-
-Major changes since 0.3b:
-	*) Now cn be interrupted with no sound hang!
-	*) demoniac.c comment now explains how to compile it
-
-Major changes since 0.2b:
-	*) More hillary README
-	*) Now plays "Fear Of The Dark"!!!!!!!!!
-	*) More advanced music timing
-
-Major changes since 0.1b:
-	First public release!!!
-
-FUTURE VERSIONS:
-
-	(If any ;) At first, I wanna say, this is just a toy
-(well, I spent 3 hours to make it, but it's just because my C is poor);
-so I'm not gonna develop it. Just some add-ons when I got free time
-or/and drunk... But, anyway:
-
-	o More flexibility; play specific sounds and files (maybe MP3?!).
-	o New name ("demoniac" is quite unhappy...).
-	o Strip sound funcions and put them in static lib.
+	* Sound timing is different on different circunstances.
+	* Sound finalization isn't properly handled on DOS/Win9x.
 
 
 THANKS:
 
-	o Dr. Checks, for music conversion
-	o Iron Maiden, for music
-	o Linus Torvalds, for /usr/src/linux/include/asm-i386
-	o Peter Norton, for PC speaker controlling algorythm
-	o Riku Saikkonen, for his IO-Port-Programming-HOWTO
-	o t0p, for idea of daemon beeper
-
-
-
-	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-	*  PLEASE DON'T FALL IN LAUGH, THIS PROGRAM IS JUST JOKE!!!   *
-	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	* Dr. Checks, for music conversion
+	* Iron Maiden, for music itself :)
+	* Linus Torvalds, for /usr/src/linux/include/asm-i386
+	* Peter Norton, for PC speaker controlling algorithm
+	* Riku Saikkonen, for his IO-Port-Programming-HOWTO
+	* The Snowblind Alliance, for Rio utility v1.07
+	* t0p, for idea of daemon beeper
