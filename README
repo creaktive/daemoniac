@@ -1,0 +1,70 @@
+                     Demoniac v0.1b -- DAEMON'iac Advisor
+                     ====================================
+
+Coded by Stas (Mail: stas@grad.icmc.sc.usp.br; URL: http://sysd.hypermart.net);
+(C)opyLeft by SysD Destructive Labs, 1997-2000
+
+
+DESCRIPTION:
+
+	This is a very primitive sound advice for Linux. Well...
+What a reason to do all this fuck with direct port I/O, if there are XBell(3)
+and printf("\a")?! The reason is simple: all these cool things needs specific
+client to be connected, so they can BEEP'em. And, sure, they don't work if used
+as sound advice for telnetd daemon (that haven't client), for example.
+
+
+USAGE:
+
+	Here I'll try to explain how to make your computer beep when
+someone tries to connect your machine through telnetd(8):
+(Heheh, enjoy that, t0p ;)
+
+-- lines from /etc/inetd.conf --
+(blah blah blah)
+telnet	stream	tcp	nowait	root	/usr/sbin/tcpd	in.telnetd -L /usr/local/sbin/login_
+(blah blah blah)
+-- end --
+
+-- lines from /usr/local/sbin/login_ --
+#!/bin/sh
+/usr/local/sbin/demoniac &
+exec login $*
+-- end --
+
+Sure, that you may
+chmod +x login_
+
+
+BUGS:
+
+	o This fuck accesses hardware I/O directly, so...
+	  Read IO-Port-Programming-HOWTO if you didn't
+	  know what does it means ;)
+	o The music it plays is quite stupid
+
+
+FUTURE VERSIONS:
+
+	(If any ;) At first, I wanna say, this is just a toy
+(well, I spent 3 hours to make it, but it's just because my C is poor);
+so I'm not gonna develop it. Just some add-ons when I got free time
+or/and drunk... But, anyway:
+
+	o More flexibility; play specific sounds and files (maybe DOS .MUS?!).
+	o New name ("demoniac" is quite unhappy...).
+	o Strip sound funcions and put them in static lib.
+
+
+THANKS:
+
+	o t0p, for idea of daemon beeper
+	o Dr. Checks, for music (it rocks!)
+	o Riku Saikkonen, for his IO-Port-Programming-HOWTO
+	o Peter Norton, for PC Speaker beepin' algorithm
+
+
+
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	*  PLEASE DON'T FALL IN LAUGH, THIS PROGRAM IS JUST JOKE!!!   *
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
